@@ -5,9 +5,31 @@
     "**/*.css"
   ],
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "main": "./src/index.ts",
   "exports": {
-    ".": "./dist",
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": {
+      "require": "./dist/*/index.js",
+      "import": "./dist/*/index.mjs",
+      "types": "./dist/*/index.d.ts"
+    },
     "./styles.css": "./dist/index.css"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*/index.d.ts",
+        "./dist/index.d.ts"
+      ]
+    }
   },
   "license": "MIT",
   "scripts": {
